@@ -1,0 +1,51 @@
+<!-- Site Header -->
+<div class="text-center mb-4">
+  <h1 class="fw-light" style="font-size: 2rem; letter-spacing: 2px; color: #2c2c2c; font-family: 'Playfair Display', serif;">
+    Exotic Travels
+  </h1>
+  <hr class="w-25 mx-auto mb-4" style="opacity: 0.1;">
+</div>
+
+<!-- Section Title -->
+<h2 class="text-center mb-4" style="font-weight: 500; font-size: 1.75rem; font-family: 'Playfair Display', serif;">
+  Our Collection
+</h2>
+
+<!-- Search Bar -->
+<div class="d-flex justify-content-center mb-4">
+  <input type="text"
+         [(ngModel)]="searchTerm"
+         class="form-control form-control-lg rounded-4 px-4 py-3 shadow-sm border-0 text-center"
+         style="background-color: #f5f5f5; max-width: 500px;"
+         placeholder="Search by brand or model" />
+</div>
+
+<!-- Car Grid -->
+<div class="row">
+  <div class="col-md-4 mb-4" *ngFor="let car of filteredCars; let i = index">
+    <a [routerLink]="['/cars', i]" class="text-decoration-none text-dark" style="display: block;">
+      <div class="card h-100 hover-card">
+        <img [src]="car.image" class="card-img-top" alt="{{ car.brand }} {{ car.model }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ car.brand }} {{ car.model }}</h5>
+          <p class="card-text">
+            Year: {{ car.year }}<br>
+            Color: {{ car.color }}<br>
+            Horsepower: {{ car.horsepower }} hp<br>
+            Price: {{ car.price }}
+          </p>
+          <div class="text-end">
+            <small class="text-muted">View Car →</small>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<!-- Back Button -->
+<div class="text-center mt-4">
+  <a routerLink="/" class="btn btn-outline-dark rounded-4 px-4 py-2">
+    ← Back to Home
+  </a>
+</div>
